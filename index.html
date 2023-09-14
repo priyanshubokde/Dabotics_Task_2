@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scientific Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Montserrat:wght@100&family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="scripy.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <section class="box-1">
+        <div id="box-one-top">
+          <div id="box-one-text">
+            <span style="font-size: 20px"><b>CASIO</b></span>
+            <span>fx-991MS PLUSE</span>
+          </div>
+
+          <center style="margin-top: 4px">
+            <code>S-V.P.A.M.</code>
+          </center>
+
+          <div id="box-one-middle">
+            <input type="text" id="display" readonly/>
+          </div>
+
+          <span id="box-one-bottom">
+            <button>Shift</button>
+            <button>Alpha</button>
+            <button>ModeCLR</button>
+            <button>on</button>
+          </span>
+        </div>
+
+        <div id="box-2">
+          <span>
+            <small>x!</small>
+            <small>nPr</small>
+            <small>           </small>
+            <small>           </small>
+            <small>Rec(</small>
+            <small>&#8731;</small>
+          </span>
+
+          <span>
+            <button>x<sup>-1</sup></button>
+            <button>nCr</button>
+            <button>x<sup>3</sup></button>
+            <button>x<sup>4</sup></button>
+            <button>x<sup>5</sup></button>
+            <button>poll(</button>
+          </span>
+
+          <span>
+            <small>d/c</small>
+            <small>          </small>
+            <small>          </small>
+            <small>&radic;x</small>
+            <small>10<sup>x</sup></small>
+            <small>e<sup>x</sup></small>
+          </span>
+
+          <span>
+            <button>a b/c</button>
+            <button onclick="performOperation('Math.sqrt(')">&radic;</button>
+            <button>x<sup>2</sup></button>
+            <button onclick="performOperation('Math.pow(')">&#94;</button>
+            <button onclick="performOperation('Math.log(')">log</button>
+            <button>ln</button>
+          </span>
+
+          <span>
+            <small>             </small>
+            <small>             </small>
+            <small>             </small>
+            <small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sin<sup>-1</sup></small>
+            <small>cos<sup>-1</sup></small>
+            <small>tan<sup>-1</sup></small>
+          </span>
+
+          <span>
+            <button>&#40;	&#45; &#41;</button>
+            <button>&#46; &#44; &#44; &#44;</button>
+            <button>hyp</button>
+            <button onclick="performOperation('Math.sin(')">sin</button>
+            <button onclick="performOperation('Math.cos(')">cos</button>
+            <button onclick="performOperation('Math.tan(')">tan</button>
+          </span>
+
+          <span>
+            <small>STO</small>
+            <small><i class="ri-arrow-left-fill"></i></small>
+            <small>             </small>
+            <small>             </small>
+            <small>;</small>
+            <small>M-</small>
+          </span>
+
+          <span>
+            <button>RCL</button>
+            <button>ENG</button>
+            <button onclick="appendToDisplay('&#40;')">&#40;</button>
+            <button onclick="appendToDisplay('&#41;')">&#41;</button>
+            <button onclick="appendToDisplay('&#44;')">&#44;</button>
+            <button>M+</button>
+          </span>
+        </div>
+
+        <div id="box-3">
+          <span>
+            <small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
+            <small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
+            <small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
+            <small>INS</small>
+            <small>OFF</small>
+          </span>
+
+          <span>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button style="color: red;" onclick="deleteLastDigit()">DEL</button>
+            <button style="color: red;" onclick="clearDisplay()">AC</button>
+          </span>
+
+          <span>
+            <small>&nbsp</small>
+            <small>&nbsp</small>
+            <small>&nbsp</small>
+            <small>&nbsp</small>
+            <small>&nbsp</small>
+          </span>
+
+          <span>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="performOperation('*')">*</button>
+            <button onclick="performOperation('/')">/</button>
+          </span>
+
+          <span>
+            <small>S-SUM</small>
+            <small>S-VAR</small>
+            <small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
+            <small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
+            <small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
+          </span>
+
+          <span>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="performOperation('+')">+</button>
+            <button onclick="performOperation('-')">-</button>
+          </span>
+
+          <span>
+            <small>Rnd</small>
+            <small>Ran#</small>
+            <small><i class="ri-paragraph"></i></small>
+            <small>DRG<i class="ri-arrow-right-s-fill"></i></small>
+            <small>%</small>
+          </span>
+
+          <span>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button>x10<sup><i>x</i></sup></button>
+            <button onclick="calculateResult()">Ans</button>
+            <button onclick="calculateResult()">=</button>
+          </span>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
